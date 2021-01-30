@@ -1,0 +1,1 @@
+"""Este algoritmo trabalha com ordenação selection """
