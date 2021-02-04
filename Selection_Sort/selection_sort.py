@@ -9,7 +9,7 @@ from random import *
 def initial():
         char = int(input("Escolha o modo de sorteio (1) para sorteio randômico, (2) para entrar item a item, ou (0) para encerrar:"))
         if char == 1:
-            lst = [randrange(0,6) for num in range(5)]
+            lst = [randrange(0,101) for num in range(101)]
             print("Lista gerada!\n{}".format(lst))
             lst = selection(lst)
             print("Essa é a lista ordenada feito o selection sorting...\n{}".format(lst))
@@ -26,18 +26,17 @@ def initial():
             initial()
 
 #Procedimento Selection (o item é comparado com seus predecessores na lista)
-#Aqui o pivô é o primeiro elemento, e é encontrado o menor valor da lista de predecessores. Dado esse menor valor, ambos trocam de lugar, e o próximo pivô é escolhido, seguindo até a ordenação completa. Caso não haja um menor valor que o pivô, nada é alterado.
+#Aqui o pivô é o primeiro elemento, e é encontrado o menor valor da lista de predecessores. Dado esse menor valor, ambos trocam de lugar, esse elemento então é separado numa lista ordenada e retirado da lista original e o próximo pivô é escolhido como sendo o primeiro novo elemento da lista, seguindo até a ordenação completa. Caso não haja um menor valor que o pivô, nada é alterado.
 
 def selection(lst):
-    k = 0
-    while k < len(lst):
-        pivo = menor = lst[k]
-        for t in lst[lst.index(pivo)+1:]:
+    ordered_lst = []
+    while len(lst) != 0:
+        menor = lst[0]
+        for t in lst[1:]:
             if t < menor:
                 menor = t
-                #print(t)
-        lst[lst.index(menor)],lst[lst.index(pivo)] = lst[lst.index(pivo)],lst[lst.index(menor)]
-        k += 1
-    return lst
+        lst[lst.index(menor)],lst[0] = lst[0],lst[lst.index(menor)]
+        ordered_lst.append(lst.pop(0))
+    return ordered_lst
 
 initial()
