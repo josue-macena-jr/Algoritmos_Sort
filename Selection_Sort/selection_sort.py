@@ -2,7 +2,7 @@
 
 """para gerar a lista, podemos fazer uma escolha randômica, ou inserir item a item conforme a escolha"""
 
-from random import *
+from random import randrange
 
 #gerando a lista randômica de tamanho fixo de 100
 
